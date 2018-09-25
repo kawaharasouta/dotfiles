@@ -1,3 +1,15 @@
+set nocompatible
+filetype off
+set rtp+=~/.vim/bundle/Vundle.vim
+call vundle#begin()
+
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'scrooloose/nerdtree'
+
+call vundle#end()
+filetype plugin indent on
+
+""" std config
 syntax on
 set nu
 set title
@@ -15,4 +27,4 @@ set smartindent
 augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
   \ exe "normal g`\"" | endif
-augroup END 
+augroup END
