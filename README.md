@@ -1,3 +1,5 @@
 # dotfiles
 
-new dotsfile.
+```
+$ ./setup.sh
+```
