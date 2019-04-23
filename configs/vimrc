@@ -24,6 +24,18 @@ set softtabstop=2
 set autoindent
 set smartindent
 
+"setting on mac
+if has('unix')
+"let ostype = system("uname")
+"if ostype == "Darwin"
+	nnoremap あ a
+	nnoremap い i
+	nnoremap う u
+	nnoremap お o
+	nnoremap っd dd
+	nnoremap っy yy	
+endif
+
 augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
   \ exe "normal g`\"" | endif
