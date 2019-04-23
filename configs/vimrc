@@ -25,6 +25,7 @@ set autoindent
 set smartindent
 
 "setting on mac
+"'mac' is not running so use 'unix'
 if has('unix')
 "let ostype = system("uname")
 "if ostype == "Darwin"
