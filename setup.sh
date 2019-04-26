@@ -10,3 +10,6 @@ vim +PluginInstall +qall
 git config --global user.name "Kawaharasouta"
 git config --global user.email "kawahara6514@gmail.com"
 git config --global core.editor 'vim -c "set fenc=utf-8"'
+
+#package
+apt install -y gcc make git silversearcher-ag cgdb
