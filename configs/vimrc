@@ -24,6 +24,21 @@ set softtabstop=2
 set autoindent
 set smartindent
 
+"Case-insensitive when searching
+set ignorecase
+"Use capital letters to distinguish
+set smartcase
+
+"Disable arrow keys
+noremap <Up> <Nop>
+noremap <Down> <Nop>
+noremap <Left> <Nop>
+noremap <Right> <Nop>
+inoremap <Up> <Nop>
+inoremap <Down> <Nop>
+inoremap <Left> <Nop>
+inoremap <Right> <Nop>
+
 "setting on mac
 "'mac' is not running so use 'unix'
 if has('unix')
