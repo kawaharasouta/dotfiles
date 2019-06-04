@@ -15,3 +15,7 @@ git config --global core.editor 'vim -c "set fenc=utf-8"'
 
 #package
 apt install -y gcc make git silversearcher-ag cgdb
+
+#skip wait for network to be configured at startup
+sudo systemctl disable systemd-networkd-wait-online.service
+sudo systemctl mask systemd-networkd-wait-online.service
