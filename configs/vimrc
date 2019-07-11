@@ -39,6 +39,8 @@ inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
+nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
+
 "setting on mac
 "'mac' is not running so use 'unix'
 if has('unix')
