@@ -1,21 +1,43 @@
 #!/bin/bash
+docker () {
+	echo "i'm containar"
+	apt install -y git
+}
 
-cp ./configs/tmux.conf ~/.tmux.conf
-cp -r ./configs/tmux/ ~/.tmux/
-cp ./configs/bashrc ~/.bashrc
+setup () {
+	#cp ./configs/tmux.conf ~/.tmux.conf
+	#cp -r ./configs/tmux/ ~/.tmux/
+	#cp ./configs/bashrc ~/.bashrc
+	#cp ./configs/vimrc ~/.vimrc
+	ln -sf ~/git/dotfiles/configs/tmux.conf ~/.tmux.conf
+	ln -sf ~/git/dotfiles/configs/tmux/ ~/.tmux
+	ln -sf ~/git/dotfiles/configs/bashrc ~/.bashrc
+	ln -sf ~/git/dotfiles/configs/vimrc ~/.vimrc
+	
+	
+	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+	vim +PluginInstall +qall
+	
+	#git config
+	git config --global user.name "Kawaharasouta"
+	git config --global user.email "kawahara6514@gmail.com"
+	git config --global core.editor 'vim -c "set fenc=utf-8"'
+}
+	
+debian () {
+	#package
+	sudo apt install -y gcc make git silversearcher-ag cgdb libncurses5-dev
+	
+	#skip wait for network to be configured at startup
+	sudo systemctl disable systemd-networkd-wait-online.service
+	sudo systemctl mask systemd-networkd-wait-online.service
+}
 
-git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
-cp ./configs/vimrc ~/.vimrc
-vim +PluginInstall +qall
 
-#git config
-git config --global user.name "Kawaharasouta"
-git config --global user.email "kawahara6514@gmail.com"
-git config --global core.editor 'vim -c "set fenc=utf-8"'
-
-#package
-apt install -y gcc make git silversearcher-ag cgdb libncurses5-dev
-
-#skip wait for network to be configured at startup
-sudo systemctl disable systemd-networkd-wait-online.service
-sudo systemctl mask systemd-networkd-wait-online.service
+if [ -e /.dockerenv ]; then
+	docker
+	setup
+else 
+	setup
+	debian
+fi
