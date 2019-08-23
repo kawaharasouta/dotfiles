@@ -12,6 +12,7 @@ setup () {
 	ln -sf ~/git/dotfiles/configs/tmux.conf ~/.tmux.conf
 	ln -sf ~/git/dotfiles/configs/tmux/ ~/.tmux
 	ln -sf ~/git/dotfiles/configs/bashrc ~/.bashrc
+	ln -sf ~/git/dotfiles/configs/bash ~/.bash
 	ln -sf ~/git/dotfiles/configs/vimrc ~/.vimrc
 	
 	
