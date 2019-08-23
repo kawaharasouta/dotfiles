@@ -138,7 +138,12 @@ if [ $SHLVL = 1 ]; then
 	alias ta="tmux attach "
 fi
 
-#docker exec  -it {container} bash
+#docker exec  -it [container] bash
 function din() { 
 	docker exec -it $1 bash
+}
+
+#ip netns exec [ns] bash
+function nsin() {
+	sudo ip netns exec $1 bash
 }
