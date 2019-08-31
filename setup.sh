@@ -1,6 +1,6 @@
 #!/bin/bash
 docker () {
-	echo "i'm containar"
+	ln -sf ~/git/dotfiles/configs/bash_profile ~/.bash_profile
 	apt install -y git
 }
 
