@@ -2,6 +2,13 @@
 docker () {
 	ln -sf ~/git/dotfiles/configs/bash_profile ~/.bash_profile
 	apt install -y git
+	docker_flag=1
+	if [ $docker_flag -eq 1 ]; then
+		tail_vimrc=`tail -n 1 ~/.vimrc`
+		if [ "${tail_vimrc}" = "set ambiwidth=double" ]; then
+			docker_flag=0
+		fi
+	fi
 }
 
 setup () {
@@ -15,6 +22,9 @@ setup () {
 	ln -sf ~/git/dotfiles/configs/bash ~/.bash
 	ln -sf ~/git/dotfiles/configs/vimrc ~/.vimrc
 	
+	if [ $docker_flag -eq 1 ]; then
+		echo "set ambiwidth=double" >> ~/.vimrc
+	fi
 	
 	git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 	vim +PluginInstall +qall
