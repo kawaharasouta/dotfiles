@@ -138,6 +138,11 @@ if [ $SHLVL = 1 ]; then
 	alias ta="tmux attach "
 fi
 
+if [[ -t 0 ]]; then
+	stty stop undef
+	stty start undef
+fi
+
 #docker exec  -it [container] bash
 function din() { 
 	docker exec -it $1 bash
