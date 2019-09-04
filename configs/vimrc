@@ -15,6 +15,7 @@ set nu
 set title
 set virtualedit=onemore
 set hlsearch
+hi Comment ctermfg=Blue
 
 "tab
 set tabstop=2
