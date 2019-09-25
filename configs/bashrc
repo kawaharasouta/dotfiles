@@ -127,8 +127,13 @@ if ! shopt -oq posix; then
 fi
 
 #DPDK setting
-export RTE_SDK=/home/khwarizmi/dpdk
+export RTE_SDK=$HOME/dpdk
 export RTE_TARGET=x86_64-native-linuxapp-gcc
+
+#golang setting
+export PATH=$PATH:/usr/local/go/bin
+export GOPATH=$HOME/go
+
 
 #tmux 
 #Attach at runtime. Start and split if there is no session.
