@@ -37,7 +37,7 @@ setup () {
 	
 debian () {
 	#package
-	sudo apt install -y gcc make htop arp-scan silversearcher-ag cgdb libncurses5-dev
+	sudo apt install -y gcc build-essential htop arp-scan silversearcher-ag cgdb libncurses5-dev
 	
 	#skip wait for network to be configured at startup
 	sudo systemctl disable systemd-networkd-wait-online.service
