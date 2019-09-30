@@ -1,1 +1,16 @@
+#enable alias with sudo
 alias sudo='sudo '
+
+# some more ls aliases
+alias ll='ls -alF'
+alias la='ls -A'
+alias l='ls -CF'
+
+#tmux 
+#Attach at runtime. Start and split if there is no session.
+if [ $SHLVL = 1 ]; then
+	alias tn="tmux new-session \; source-file ~/.tmux/session"
+	alias tls="tmux ls"
+	alias ta="tmux attach "
+fi
+

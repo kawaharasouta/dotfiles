@@ -87,11 +87,6 @@ fi
 # colored GCC warnings and errors
 #export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
 
-# some more ls aliases
-alias ll='ls -alF'
-alias la='ls -A'
-alias l='ls -CF'
-
 # Add an "alert" alias for long running commands.  Use like so:
 #		sleep 10; alert
 alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
@@ -134,14 +129,6 @@ export RTE_TARGET=x86_64-native-linuxapp-gcc
 export PATH=$PATH:/usr/local/go/bin
 export GOPATH=$HOME/go
 
-
-#tmux 
-#Attach at runtime. Start and split if there is no session.
-if [ $SHLVL = 1 ]; then
-	alias tn="tmux new-session \; source-file ~/.tmux/session"
-	alias tls="tmux ls"
-	alias ta="tmux attach "
-fi
 
 if [[ -t 0 ]]; then
 	stty stop undef
