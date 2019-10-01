@@ -37,7 +37,7 @@ setup () {
 	
 debian () {
 	#package
-	sudo apt install -y gcc build-essential htop arp-scan silversearcher-ag cgdb libncurses5-dev
+	sudo apt install -y build-essential htop arp-scan silversearcher-ag cgdb libncurses5-dev
 	
 	#skip wait for network to be configured at startup
 	sudo systemctl disable systemd-networkd-wait-online.service
@@ -46,15 +46,24 @@ debian () {
 
 mac () {
 	echo MAC
+	if [ ! -e /usr/local/bin/brew ]; then
+		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+	fi
+	sudo brew install wget htop tmux arp-scan ag coreutils
 }
 
 setup
 if [ -e /.dockerenv ]; then
 	docker
 fi
-if [ "$(uname)" == "Darwin" ]; then
-	mac
-elif [ "$(uname)" == "Linux" ]; then
-	# now only debian
-	debian
-fi
+#if [ "$(uname)" == "Darwin" ]; then
+#	# now only mac
+#	mac
+#elif [ "$(uname)" == "Linux" ]; then
+#	# now only debian
+#	debian
+#fi
+case "$(uname)" in
+	Darwin*)	mac
+	Linux*)		debian
+esac
