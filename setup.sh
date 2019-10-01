@@ -12,10 +12,6 @@ docker () {
 }
 
 setup () {
-	#cp ./configs/tmux.conf ~/.tmux.conf
-	#cp -r ./configs/tmux/ ~/.tmux/
-	#cp ./configs/bashrc ~/.bashrc
-	#cp ./configs/vimrc ~/.vimrc
 	ln -sf ~/git/dotfiles/configs/tmux.conf ~/.tmux.conf
 	ln -sf ~/git/dotfiles/configs/tmux/ ~/.tmux
 	ln -sf ~/git/dotfiles/configs/bashrc ~/.bashrc
