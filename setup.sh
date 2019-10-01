@@ -45,7 +45,7 @@ debian () {
 }
 
 mac () {
-
+	echo MAC
 }
 
 setup
