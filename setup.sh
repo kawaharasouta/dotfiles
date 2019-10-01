@@ -44,11 +44,17 @@ debian () {
 	sudo systemctl mask systemd-networkd-wait-online.service
 }
 
+mac () {
 
+}
+
+setup
 if [ -e /.dockerenv ]; then
 	docker
-	setup
-else 
-	setup
+fi
+if [ "$(uname)" == "Darwin" ]; then
+	mac
+elif [ "$(uname)" == "Linux" ]; then
+	# now only debian
 	debian
 fi
