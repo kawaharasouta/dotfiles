@@ -64,6 +64,7 @@ fi
 #	debian
 #fi
 case "$(uname)" in
-	Darwin*)	mac
-	Linux*)		debian
+	Darwin*)	mac ;;
+	Linux*)		debian ;;
+	*)				echo "unknown OS"
 esac
