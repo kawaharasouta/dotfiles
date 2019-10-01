@@ -49,20 +49,13 @@ mac () {
 	if [ ! -e /usr/local/bin/brew ]; then
 		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	fi
-	sudo brew install wget htop tmux arp-scan ag coreutils
+	brew install wget htop tmux arp-scan ag coreutils
 }
 
 setup
 if [ -e /.dockerenv ]; then
 	docker
 fi
-#if [ "$(uname)" == "Darwin" ]; then
-#	# now only mac
-#	mac
-#elif [ "$(uname)" == "Linux" ]; then
-#	# now only debian
-#	debian
-#fi
 case "$(uname)" in
 	Darwin*)	mac ;;
 	Linux*)		debian ;;
