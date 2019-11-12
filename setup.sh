@@ -33,7 +33,7 @@ setup () {
 	
 debian () {
 	#package
-	sudo apt install -y build-essential htop arp-scan silversearcher-ag cgdb libncurses5-dev
+	sudo apt install -y build-essential htop arp-scan silversearcher-ag cgdb libncurses5-dev vim tmux
 	
 	#skip wait for network to be configured at startup
 	sudo systemctl disable systemd-networkd-wait-online.service
@@ -48,7 +48,6 @@ mac () {
 	brew install wget htop tmux arp-scan ag coreutils
 }
 
-setup
 if [ -e /.dockerenv ]; then
 	docker
 fi
@@ -57,3 +56,4 @@ case "$(uname)" in
 	Linux*)		debian ;;
 	*)				echo "unknown OS"
 esac
+setup
