@@ -32,8 +32,10 @@ setup () {
 }
 	
 ubuntu () {
+	echo "ubuntu"
+
 	#package
-	sudo apt install -y build-essential htop arp-scan silversearcher-ag cgdb libncurses5-dev vim tmux
+	sudo apt update && sudo apt install -y build-essential htop arp-scan silversearcher-ag cgdb libncurses5-dev vim tmux
 	
 	#skip wait for network to be configured at startup
 	sudo systemctl disable systemd-networkd-wait-online.service
@@ -42,6 +44,7 @@ ubuntu () {
 
 mac () {
 	echo "MAC"
+
 	if [ ! -e /usr/local/bin/brew ]; then
 		/usr/bin/ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
 	fi
@@ -50,6 +53,9 @@ mac () {
 
 centos () {
 	echo "centos"
+	
+	sudo yum update && sudo yum install -y epel-release 
+	sudo yum update && sudo yum install -y vim wget tmux htop cgdb the_silver_searcher
 }
 
 setup
