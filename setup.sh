@@ -33,7 +33,7 @@ setup () {
 	
 ubuntu () {
 	#package
-	sudo apt install -y build-essential htop arp-scan silversearcher-ag cgdb libncurses5-dev
+	sudo apt install -y build-essential htop arp-scan silversearcher-ag cgdb libncurses5-dev vim tmux
 	
 	#skip wait for network to be configured at startup
 	sudo systemctl disable systemd-networkd-wait-online.service
@@ -70,3 +70,4 @@ case "$(uname)" in
 		;;
 	*)				echo "unknown OS"
 esac
+setup
