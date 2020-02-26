@@ -132,7 +132,7 @@ export RTE_SDK=$HOME/dpdk
 export RTE_TARGET=x86_64-native-linuxapp-gcc
 
 #golang setting
-export PATH=$PATH:/usr/local/go/bin
+export PATH=$PATH:$HOME/go/bin	#for mac
 export GOPATH=$HOME/go
 
 if [[ -t 0 ]]; then
@@ -149,3 +149,6 @@ function din() {
 function nsin() {
 	sudo ip netns exec $1 bash
 }
+
+#mac nodejs
+export PATH=$PATH:$HOME/.nodebrew/current/bin
