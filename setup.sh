@@ -59,7 +59,7 @@ centos () {
 
 freebsd () {
 	echo "FreeBSD"
-	sudo pkg install -y bash vim tmux cgdb the_silver_searcher
+	sudo pkg install -y bash vim tmux gcc cgdb the_silver_searcher
 }
 
 if [ -e /.dockerenv ]; then
