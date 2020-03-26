@@ -1,7 +1,6 @@
 #!/bin/bash
 docker () {
 	ln -sf ~/git/dotfiles/configs/bash_profile ~/.bash_profile
-	apt install -y git
 	docker_flag=1
 	if [ $((docker_flag)) -eq 1 ]; then
 		tail_vimrc=`tail -n 1 ~/.vimrc`
@@ -58,10 +57,10 @@ centos () {
 	sudo yum update && sudo yum install -y vim wget tmux htop cgdb the_silver_searcher
 }
 
-setup
 if [ -e /.dockerenv ]; then
 	docker
 fi
+setup
 case "$(uname)" in
 	Darwin*)	mac ;;
 	Linux*)		
@@ -76,4 +75,3 @@ case "$(uname)" in
 		;;
 	*)				echo "unknown OS"
 esac
-setup
