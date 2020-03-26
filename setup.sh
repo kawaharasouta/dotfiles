@@ -57,6 +57,11 @@ centos () {
 	sudo yum update && sudo yum install -y vim wget tmux htop cgdb the_silver_searcher
 }
 
+freebsd () {
+	echo "FreeBSD"
+	sudo pkg install -y bash vim tmux cgdb the_silver_searcher
+}
+
 if [ -e /.dockerenv ]; then
 	docker
 fi
@@ -73,5 +78,7 @@ case "$(uname)" in
 			esac
 		fi
 		;;
+	FreeBSD*)
+		freebsd ;;
 	*)				echo "unknown OS"
 esac
