@@ -29,6 +29,13 @@ setup () {
 	git config --global user.email "kawahara6514@gmail.com"
 	git config --global core.editor 'vim -c "set fenc=utf-8"'
 }
+
+vim () {
+	mkdir ~/tmp/ && git clone https://github.com/vim/vim.git ~/tmp/vim -b v8.2.0000 
+	cd ~/tmp/vim
+	./configure --with-features=huge --enable-fail-if-missing
+	make && sudo make install
+}
 	
 ubuntu () {
 	echo "ubuntu"
@@ -59,13 +66,13 @@ centos () {
 
 freebsd () {
 	echo "FreeBSD"
-	sudo pkg install -y bash vim tmux gcc cgdb the_silver_searcher ncurses
+	sudo pkg install -y bash tmux gcc cgdb the_silver_searcher ncurses
+	vim
 }
 
 if [ -e /.dockerenv ]; then
 	docker
 fi
-setup
 case "$(uname)" in
 	Darwin*)	mac ;;
 	Linux*)		
@@ -82,3 +89,4 @@ case "$(uname)" in
 		freebsd ;;
 	*)				echo "unknown OS"
 esac
+setup
