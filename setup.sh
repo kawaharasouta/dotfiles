@@ -67,7 +67,11 @@ centos () {
 freebsd () {
 	echo "FreeBSD"
 	sudo pkg install -y bash tmux gcc cgdb the_silver_searcher ncurses
+	chsh -s bash khwarizmi
 	vim
+	#sudo echo "proc	/proc	procfs	rw	0	0" >> /etc/fstab
+	echo "you need to add \"proc	/proc	procfs	rw	0	0\" to /etc/fstab"
+	echo "and reboot."
 }
 
 if [ -e /.dockerenv ]; then
