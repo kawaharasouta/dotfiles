@@ -5,6 +5,7 @@ call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
 Plugin 'scrooloose/nerdtree'
+Plugin 'jistr/vim-nerdtree-tabs'
 Plugin 'fatih/vim-go'
 
 call vundle#end()
@@ -41,7 +42,20 @@ inoremap <Down> <Nop>
 inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
+" shift-o de sitani gyouwo ireruyo
 nnoremap O :<C-u>call append(expand('.'), '')<Cr>j
+
+" NERDTree key
+nnoremap <silent><C-e> :NERDTreeToggle<CR>
+" default NERDTree activate(damesou?)
+let g:nerdtree_tabs_open_on_console_startup=1
+" show secret file
+let NERDTreeShowHidden = 1
+" tab move
+nnoremap <Tab>l gt
+nnoremap <Tab>h gT
+" ikkinitojiruyatu
+autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 "setting on mac
 "'mac' is not running so use 'unix'
