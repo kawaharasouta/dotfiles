@@ -16,6 +16,7 @@ setup () {
 	ln -sf ~/git/dotfiles/configs/bashrc ~/.bashrc
 	ln -sf ~/git/dotfiles/configs/bash ~/.bash
 	ln -sf ~/git/dotfiles/configs/vimrc ~/.vimrc
+	ln -sf ~/git/dotfiles/configs/vim ~/.vim
 	
 	if [ $((docker_flag)) -eq 1 ]; then
 		echo "set ambiwidth=double" >> ~/.vimrc
