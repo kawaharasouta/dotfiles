@@ -21,7 +21,7 @@ set virtualedit=onemore
 set hlsearch
 hi Comment ctermfg=Blue
 
-"tab
+" tab
 set tabstop=2
 set shiftwidth=2
 set softtabstop=2
@@ -29,12 +29,12 @@ set softtabstop=2
 set autoindent
 set smartindent
 
-"Case-insensitive when searching
+" Case-insensitive when searching
 set ignorecase
-"Use capital letters to distinguish
+" Use capital letters to distinguish
 set smartcase
 
-"Disable arrow keys
+" Disable arrow keys
 noremap <Up> <Nop>
 noremap <Down> <Nop>
 noremap <Left> <Nop>
@@ -63,8 +63,8 @@ autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isT
 let g:cheatsheet#cheat_file = '~/.vim/cheatsheet.md'
 nnoremap <C-h> :Cheat<CR>
 
-"setting on mac
-"'mac' is not running so use 'unix'
+" setting on mac
+" 'mac' is not running so use 'unix'
 if has('unix')
 "let ostype = system("uname")
 "if ostype == "Darwin"
@@ -76,6 +76,7 @@ if has('unix')
 	nnoremap っy yy	
 endif
 
+" Remember cursor position
 augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
   \ exe "normal g`\"" | endif
