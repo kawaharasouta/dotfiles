@@ -60,7 +60,7 @@ nnoremap <Tab>h gT
 autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
 
 " Cheetsheet
-let g:cheatsheet#cheat_file = '~/.vim/cheatsheet'
+let g:cheatsheet#cheat_file = '~/.vim/cheatsheet.md'
 nnoremap <C-h> :Cheat<CR>
 
 "setting on mac
