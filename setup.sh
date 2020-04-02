@@ -17,9 +17,7 @@ setup () {
 	ln -sf ~/git/dotfiles/configs/bash ~/.bash
 	ln -sf ~/git/dotfiles/configs/vimrc ~/.vimrc
 	ln -sf ~/git/dotfiles/configs/vim ~/.vim
-	if [ -e ~/.config ]; then
-		mkdir ~/.config
-	fi
+	mkdir -p ~/.config
 	ln -sf ~/git/dotfiles/configs/nvim ~/.config/nvim
 	
 	if [ $((docker_flag)) -eq 1 ]; then
@@ -53,7 +51,7 @@ ubuntu () {
 	sudo systemctl mask systemd-networkd-wait-online.service
 
 	# neovim setup
-	if [ -f /usr/bin/nvim ]; then
+	if [ ! -f /usr/bin/nvim ]; then
 		sudo apt install software-properties-common
 		sudo add-apt-repository ppa:neovim-ppa/stable
 		sudo apt update && sudo apt install neovim
