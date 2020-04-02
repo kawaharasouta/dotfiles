@@ -1,0 +1,2 @@
+[[plugins]]
+repo = 'itchyny/lightline.vim'
