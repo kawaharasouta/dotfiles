@@ -47,6 +47,7 @@ ubuntu () {
 
 	#package
 	sudo apt update && sudo apt install -y build-essential htop arp-scan silversearcher-ag cgdb libncurses5-dev tmux
+	sudo apt remove vim
 	
 	#skip wait for network to be configured at startup
 	sudo systemctl disable systemd-networkd-wait-online.service
