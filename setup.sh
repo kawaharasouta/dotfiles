@@ -28,6 +28,8 @@ setup () {
 	git config --global user.name "Kawaharasouta"
 	git config --global user.email "kawahara6514@gmail.com"
 	git config --global core.editor 'vim -c "set fenc=utf-8"'
+
+	source ~/.bashrc
 }
 
 build-vim () {
@@ -52,16 +54,15 @@ ubuntu () {
 
 	# neovim setup
 	if [ ! -f /usr/bin/nvim ]; then
-		sudo apt install software-properties-common
-		sudo add-apt-repository ppa:neovim-ppa/stable
-		sudo apt update && sudo apt install neovim
-		sudo apt install python3-dev python3-pip
+		sudo apt install -y software-properties-common
+		sudo add-apt-repository -y ppa:neovim-ppa/stable
+		sudo apt update && sudo apt install -y neovim
+		sudo apt install -y python3-dev python3-pip
 		pip3 install -U pip3
 		pip3 install neovim
-		sudo apt install xclip xsel
-		echo "export XDG_CONFIG_HOME=$HOME/.config" >> ~/.bashrc
-		echo "export XDG_CACHE_HOME=$HOME/.cache" >> ~/.bashrc
-		source ~/.bashrc
+		sudo apt install -y xclip xsel
+		#echo "export XDG_CONFIG_HOME=$HOME/.config" >> ~/.bashrc
+		#echo "export XDG_CACHE_HOME=$HOME/.cache" >> ~/.bashrc
 	fi
 }
 
