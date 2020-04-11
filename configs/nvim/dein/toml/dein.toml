@@ -27,5 +27,8 @@ repo = 'markonm/traces.vim'
 repo = 'reireias/vim-cheatsheet'
 hook_add = '''
 	let g:cheatsheet#cheat_file = '~/.vim/cheatsheet.md'
-	nnoremap <C-h> :Cheat<CR>
+	nnoremap <silent> <C-h> :Cheat<CR>
 '''
+
+[[plugins]]
+repo = 'Shougo/denite.nvim'
