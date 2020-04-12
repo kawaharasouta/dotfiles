@@ -28,6 +28,8 @@
 - '%'				" move to pair brachet
 
 
+
+
 ## related plugin 
 
 ### NEADTree
@@ -35,6 +37,13 @@
 - 't'				: open file new tab
 
 
+### denite
+
+
+
+
 ###### reference
 
 - https://www.ne.jp/asahi/hishidama/home/tech/unix/vi.html
+
+

@@ -43,6 +43,14 @@ endfunction
 
 
 
+let mapleader = "\<Space>"
+""" denite hook
+nnoremap <silent> <leader>f :Denite file/rec<CR>
+nnoremap <silent> <leader>b :Denite buffer<CR>
+nnoremap <silent> <leader>g :Denite grep<CR>
+nnoremap <silent> <leader>l :Denite line<CR>
+
+
 
 """ std config
 syntax on

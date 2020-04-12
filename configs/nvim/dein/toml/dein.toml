@@ -32,3 +32,10 @@ hook_add = '''
 
 [[plugins]]
 repo = 'Shougo/denite.nvim'
+hook_add = '''
+	nnoremap <silent> <leader>f :Denite file/rec<CR>
+	nnoremap <silent> <leader>b :Denite buffer<CR>
+	nnoremap <silent> <leader>g :Denite grep<CR>
+	nnoremap <silent> <leader>l :Denite line<CR>
+'''
+
