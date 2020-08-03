@@ -85,7 +85,7 @@ inoremap <Left> <Nop>
 inoremap <Right> <Nop>
 
 " shift-o de sitani gyouwo ireruyo
-nnoremap <silent> O :<C-u>call append(expand('.'), '')<Cr>j
+"nnoremap <silent> O :<C-u>call append(expand('.'), '')<Cr>j
 
 " tab move
 nnoremap <Tab>l gt
