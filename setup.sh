@@ -54,10 +54,11 @@ ubuntu () {
 	sudo systemctl mask systemd-networkd-wait-online.service
 
 	# neovim setup
-	if [ ! -f /usr/bin/nvim ]; then
+	if [ ! -e /usr/bin/nvim ]; then
 		sudo apt install -y software-properties-common
 		sudo add-apt-repository -y ppa:neovim-ppa/stable
-		sudo apt update && sudo apt install -y neovim
+		sudo apt update 
+		sudo apt install -y neovim
 		sudo apt install -y python3-dev python3-pip
 		pip3 install -U pip3
 		pip3 install neovim
