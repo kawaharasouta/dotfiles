@@ -3,15 +3,24 @@
 
 ## basic operation
 
-### move tab
-- '<tab>h'	: move tab left
-- '<tab>l'	: move tab right
-
 ### move
 - '[num]gg'	: move to [num]th line
 - 'G'				: move to end
-- '0'				: move to line head
-- '$'				: move to line end
+- '^'				: move to line head
+- '$'				: move to line end0
+- 'w'				: move word head
+- 'e'				: move word end
+
+### start insert mode
+- 'i'				: 
+- 'I'				:
+- 'a'				:
+- 'A'				:
+- 'o'				:
+- 'O'				:
+
+- 's'				: delete char (where you are) and start insert mode
+- 'S'				: delete line (where you are) and start insert mode
 
 ### related search
 **search move**
@@ -27,7 +36,9 @@
 **brackets move**
 - '%'				" move to pair brachet
 
-
+### move tab
+- '<tab>h'	: move tab left
+- '<tab>l'	: move tab right
 
 
 ## related plugin 
