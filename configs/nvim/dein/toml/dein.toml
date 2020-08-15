@@ -23,6 +23,10 @@ repo = 'jistr/vim-nerdtree-tabs'
 [[plugins]]
 repo = 'markonm/traces.vim'
 
+# comment
+[[plugins]]
+repo = 'tpope/vim-commentary'
+
 [[plugins]]
 repo = 'reireias/vim-cheatsheet'
 hook_add = '''
