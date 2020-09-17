@@ -78,6 +78,9 @@ set smartcase
 "set ruler
 set cursorline
 
+" commnad completion
+set wildmenu
+
 " Disable arrow keys
 noremap <Up> <Nop>
 noremap <Down> <Nop>
