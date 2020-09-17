@@ -74,6 +74,10 @@ set ignorecase
 " Use capital letters to distinguish
 set smartcase
 
+" cursorl
+"set ruler
+set cursorline
+
 " Disable arrow keys
 noremap <Up> <Nop>
 noremap <Down> <Nop>
@@ -91,10 +95,8 @@ inoremap <Right> <Nop>
 nnoremap <Tab>l gt
 nnoremap <Tab>h gT
 
-" cursorl
-"set ruler
-set cursorline
-
+" when in terminal mode, enable esc
+tnoremap <silent> <ESC> <C-\><C-n>
 
 " setting on mac
 " 'mac' is not running so use 'unix'
@@ -113,4 +115,10 @@ endif
 augroup vimrcEx
   au BufRead * if line("'\"") > 0 && line("'\"") <= line("$") |
   \ exe "normal g`\"" | endif
+augroup END
+
+" disable set nu when in terminal emu
+augroup FolowTerm
+    au!
+    au TermOpen * setlocal nonumber
 augroup END
