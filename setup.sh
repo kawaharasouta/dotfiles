@@ -63,8 +63,6 @@ ubuntu () {
 		pip3 install -U pip3
 		pip3 install neovim
 		sudo apt install -y xclip xsel
-		#echo "export XDG_CONFIG_HOME=$HOME/.config" >> ~/.bashrc
-		#echo "export XDG_CACHE_HOME=$HOME/.cache" >> ~/.bashrc
 	fi
 }
 

@@ -154,5 +154,6 @@ function nsin() {
 #mac nodejs
 export PATH=$PATH:$HOME/.nodebrew/current/bin
 
+# XDG some setting
 export XDG_CONFIG_HOME=/home/khwarizmi/.config
 export XDG_CACHE_HOME=/home/khwarizmi/.cache
