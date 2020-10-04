@@ -1,4 +1,8 @@
 #!/bin/bash
+
+DOTFILES_HOME=$(pwd)
+OS=
+
 docker () {
 	ln -sf ~/git/dotfiles/configs/bash_profile ~/.bash_profile
 	docker_flag=1
@@ -24,12 +28,33 @@ setup () {
 		echo "set ambiwidth=double" >> ~/.vimrc
 	fi
 	
-	#git config
+	source ~/.bashrc
+}
+
+git () {
+	local path
+	# git basic config
 	git config --global user.name "Kawaharasouta"
 	git config --global user.email "kawahara6514@gmail.com"
 	git config --global core.editor 'vim -c "set fenc=utf-8"'
 
-	source ~/.bashrc
+	# gitignore global setting
+	### FreeBSD ha taiou sitenai
+	if [ -z ${OS} ] ; then
+		echo "FreeBSD gitignore_Global setting is not supported."
+		return
+	fi
+	mkdir -p ${DOTFILES_HOME}/tmp/gitignore_Global && cd $_
+	cd ${DOTFILES_HOME}/tmp/gitignore_Global
+	git init 
+	git config core.sparsecheckout true
+	git remote add origin https://github.com/github/gitignore.git
+	echo Global > .git/info/sparse-checkout
+	git pull origin master
+	path=${DOTFILES_HOME}/tmp/gitignore_Global
+	mkdir -p ${XDG_CONFIG_HOME}/git
+	cat ${path}/${OS}.gitignore ${path}/Vim.gitignore >> ${XDG_CONFIG_HOME}/git/ignore
+	cd ${DOTFILES_HOME}
 }
 
 build-vim () {
@@ -92,12 +117,17 @@ freebsd () {
 	echo "and reboot."
 }
 
+mkdir -p ${DOTFILES_HOME}/tmp
 if [ -e /.dockerenv ]; then
 	docker
 fi
+setup
 case "$(uname)" in
-	Darwin*)	mac ;;
-	Linux*)		
+	Darwin*)	
+		OS=macOS
+		mac ;;
+	Linux*)
+		OS=Linux
 		if [[ -f /etc/os-release ]]; then
 			. /etc/os-release
 			case $ID in 
@@ -111,4 +141,4 @@ case "$(uname)" in
 		freebsd ;;
 	*)				echo "unknown OS"
 esac
-setup
+rm -rf ${DOTFILES_HOME}/tmp
