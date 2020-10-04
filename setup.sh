@@ -31,7 +31,7 @@ setup () {
 	source ~/.bashrc
 }
 
-git () {
+git_setup () {
 	local path
 	# git basic config
 	git config --global user.name "Kawaharasouta"
@@ -44,16 +44,15 @@ git () {
 		echo "FreeBSD gitignore_Global setting is not supported."
 		return
 	fi
-	mkdir -p ${DOTFILES_HOME}/tmp/gitignore_Global && cd $_
-	cd ${DOTFILES_HOME}/tmp/gitignore_Global
+	path=${DOTFILES_HOME}/tmp/gitignore
+	mkdir -p ${path} && cd $_
 	git init 
 	git config core.sparsecheckout true
 	git remote add origin https://github.com/github/gitignore.git
 	echo Global > .git/info/sparse-checkout
 	git pull origin master
-	path=${DOTFILES_HOME}/tmp/gitignore_Global
 	mkdir -p ${XDG_CONFIG_HOME}/git
-	cat ${path}/${OS}.gitignore ${path}/Vim.gitignore >> ${XDG_CONFIG_HOME}/git/ignore
+	cat ${path}/Global/${OS}.gitignore ${path}/Global/Vim.gitignore >> ${XDG_CONFIG_HOME}/git/ignore
 	cd ${DOTFILES_HOME}
 }
 
@@ -141,4 +140,5 @@ case "$(uname)" in
 		freebsd ;;
 	*)				echo "unknown OS"
 esac
+git_setup
 rm -rf ${DOTFILES_HOME}/tmp
