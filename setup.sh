@@ -103,7 +103,8 @@ centos () {
 	echo "centos"
 	
 	sudo yum update && sudo yum install -y epel-release 
-	sudo yum update && sudo yum install -y vim wget tmux htop cgdb the_silver_searcher
+	sudo yum update && sudo yum install -y wget tmux htop cgdb the_silver_searcher
+	build-vim
 }
 
 freebsd () {
