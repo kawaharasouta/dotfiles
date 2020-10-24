@@ -127,31 +127,32 @@ if ! shopt -oq posix; then
 	fi
 fi
 
-#DPDK setting
+# DPDK setting
 export RTE_SDK=$HOME/dpdk
 export RTE_TARGET=x86_64-native-linuxapp-gcc
 
-#golang setting
+# golang setting
 export PATH=$PATH:$HOME/go/bin	#for mac
 export PATH=$PATH:/usr/local/go/bin 	#for mac
 export GOPATH=$HOME/go
 
+# disable ctrl-S & ctrl-Q
 if [[ -t 0 ]]; then
 	stty stop undef
 	stty start undef
 fi
 
-#docker exec  -it [container] bash
+# docker exec  -it [container] bash
 function din() { 
 	docker exec -it $1 bash
 }
 
-#ip netns exec [ns] bash
+# ip netns exec [ns] bash
 function nsin() {
 	sudo ip netns exec $1 bash
 }
 
-#mac nodejs
+# mac nodejs
 export PATH=$PATH:$HOME/.nodebrew/current/bin
 
 # XDG some setting
