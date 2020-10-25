@@ -72,12 +72,6 @@ xterm*|rxvt*)
 	;;
 esac
 
-if [ "$(uname)" == "Darwin" ]; then
-	#coreutil setting
-	export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
-	export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
-fi
-
 # enable color support of ls and also add handy aliases
 if [ -x /usr/bin/dircolors ] || [ -x /usr/local/opt/coreutils/libexec/gnubin/dircolors ]; then
 	test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
@@ -110,10 +104,15 @@ if [ -f $bash_conf_dir/bash_aliases ]; then
 	. $bash_conf_dir/bash_aliases
 fi
 
-#my key bind
+# my key bind
 
 if [ -f $bash_conf_dir/bash_keys ]; then
 	. $bash_conf_dir/bash_keys
+fi
+
+# envs
+if [ -f $bash_conf_dir/bash_envs ]; then
+	. $bash_conf_dir/bash_envs
 fi
 
 # enable programmable completion features (you don't need to enable
@@ -126,15 +125,6 @@ if ! shopt -oq posix; then
 		. /etc/bash_completion
 	fi
 fi
-
-# DPDK setting
-export RTE_SDK=$HOME/dpdk
-export RTE_TARGET=x86_64-native-linuxapp-gcc
-
-# golang setting
-export PATH=$PATH:$HOME/go/bin	#for mac
-export PATH=$PATH:/usr/local/go/bin 	#for mac
-export GOPATH=$HOME/go
 
 # disable ctrl-S & ctrl-Q
 if [[ -t 0 ]]; then
@@ -152,15 +142,3 @@ function nsin() {
 	sudo ip netns exec $1 bash
 }
 
-# mac nodejs
-export PATH=$PATH:$HOME/.nodebrew/current/bin
-
-# XDG some setting
-### user dir
-export XDG_CONFIG_HOME=/home/khwarizmi/.config
-export XDG_CACHE_HOME=/home/khwarizmi/.cache
-# export XDG_DATA_HOME=/home/khwarizmi/.cache
-# export XDG_RUNTIME_HOME=/home/khwarizmi/.cache
-### system dir
-# export XDG_DATA_DIRS=/home/khwarizmi/.cache
-# export XDG_CONFIG_DIRS=/home/khwarizmi/.cache

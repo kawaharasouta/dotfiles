@@ -1,0 +1,29 @@
+# mac envs
+if [ "$(uname)" == "Darwin" ]; then
+	# coreutil setting
+	export PATH=/usr/local/opt/coreutils/libexec/gnubin:$PATH
+	export MANPATH=/usr/local/opt/coreutils/libexec/gnuman:$MANPATH
+	# mac nodejs
+	export PATH=$PATH:$HOME/.nodebrew/current/bin
+fi
+
+# DPDK setting
+export RTE_SDK=$HOME/dpdk
+export RTE_TARGET=x86_64-native-linuxapp-gcc
+
+# golang setting
+export PATH=$PATH:$HOME/go/bin  #for mac
+export PATH=$PATH:/usr/local/go/bin   #for mac
+export GOPATH=$HOME/go
+
+# XDG some setting
+### user dir
+export XDG_CONFIG_HOME=/home/khwarizmi/.config
+export XDG_CACHE_HOME=/home/khwarizmi/.cache
+# export XDG_DATA_HOME=/home/khwarizmi/.cache
+# export XDG_RUNTIME_HOME=/home/khwarizmi/.cache
+### system dir
+# export XDG_DATA_DIRS=/home/khwarizmi/.cache
+# export XDG_CONFIG_DIRS=/home/khwarizmi/.cache
+
+
