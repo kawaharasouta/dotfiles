@@ -39,6 +39,7 @@ function! s:denite_my_settings() abort
 	\ denite#do_map('open_filter_buffer')
 	nnoremap <silent><buffer><expr> <Space>
 	\ denite#do_map('toggle_select').'j'
+	" let s:exclude_filetypes = 0
 endfunction
 
 " Define denite-filter mappings
@@ -54,7 +55,6 @@ function! s:denite_filter_my_settings() abort
   " nmap <silent><buffer><expr> <C-c> <Plug>(denite_filter_quit)
 endfunction
 
-
 let mapleader = "\<Space>"
 """ denite hook
 nnoremap <silent> <leader>f :Denite file/rec<CR>
@@ -62,7 +62,22 @@ nnoremap <silent> <leader>b :Denite buffer<CR>
 nnoremap <silent> <leader>g :Denite grep<CR>
 nnoremap <silent> <leader>l :Denite line<CR>
 
+" Change file/rec command ag.
+call denite#custom#var('file/rec', 'command',
+	\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+" Ag command on grep source
+call denite#custom#var('grep', {
+	\ 'command': ['ag'],
+	\ 'default_opts': ['-i', '--vimgrep'],
+	\ 'recursive_opts': [],
+	\ 'pattern_opt': [],
+	\ 'separator': ['--'],
+	\ 'final_opts': [],
+	\ })
 
+" Change default action.
+" When a new file is opened, it is split.
+" call denite#custom#kind('file', 'default_action', 'split')
 
 """ std config
 syntax on
