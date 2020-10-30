@@ -24,7 +24,7 @@ if has('vim_starting') && dein#check_install()
 endif
 " dein.vim }}}
 
-" Define mappings
+" Define denite mappings
 autocmd FileType denite call s:denite_my_settings()
 function! s:denite_my_settings() abort
 	nnoremap <silent><buffer><expr> <CR>
@@ -41,6 +41,18 @@ function! s:denite_my_settings() abort
 	\ denite#do_map('toggle_select').'j'
 endfunction
 
+" Define denite-filter mappings
+autocmd FileType denite-filter call s:denite_filter_my_settings()
+function! s:denite_filter_my_settings() abort
+  " Open the directory on top
+  inoremap <silent><buffer><expr> <C-k> denite#do_map('move_up_path')
+  " imap <silent><buffer> <C-o> <Plug>(denite_filter_quit)
+  " Close denite(not denite-filter so, denite pane will be closed.)
+  inoremap <silent><buffer><expr> <C-c> denite#do_map('quit')
+  nnoremap <silent><buffer><expr> <C-c> denite#do_map('quit')
+  " imap <silent><buffer><expr> <C-c> <Plug>(denite_filter_quit)
+  " nmap <silent><buffer><expr> <C-c> <Plug>(denite_filter_quit)
+endfunction
 
 
 let mapleader = "\<Space>"

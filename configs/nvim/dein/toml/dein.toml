@@ -1,24 +1,6 @@
 [[plugins]]
 repo = 'itchyny/lightline.vim'
 
-
-[[plugins]]
-repo = 'scrooloose/nerdtree'
-hook_add = '''
-	" NERDTree key
-	nnoremap <silent><C-e> :NERDTreeToggle<CR>
-	" default NERDTree activate(damesou?)
-	"let g:nerdtree_tabs_open_on_console_startup=1
-	" show secret file
-	let NERDTreeShowHidden = 1
-	" ikkinitojiruyatu
-	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
-'''
-
-# for nerdtree
-[[plugins]]
-repo = 'jistr/vim-nerdtree-tabs'
-
 # for replace
 [[plugins]]
 repo = 'markonm/traces.vim'
@@ -48,3 +30,22 @@ repo = 'vim-jp/vimdoc-ja'
 hook_add = '''
 	set helplang=ja
 '''
+
+
+###[[plugins]]
+###repo = 'scrooloose/nerdtree'
+###hook_add = '''
+###	" NERDTree key
+###	nnoremap <silent><C-e> :NERDTreeToggle<CR>
+###	" default NERDTree activate(damesou?)
+###	"let g:nerdtree_tabs_open_on_console_startup=1
+###	" show secret file
+###	let NERDTreeShowHidden = 1
+###	" ikkinitojiruyatu
+###	autocmd bufenter * if (winnr("$") == 1 && exists("b:NERDTree") && b:NERDTree.isTabTree()) | q | endif
+###'''
+###
+#### for nerdtree
+###[[plugins]]
+###repo = 'jistr/vim-nerdtree-tabs'
+
