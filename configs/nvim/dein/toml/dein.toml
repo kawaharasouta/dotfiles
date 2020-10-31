@@ -1,5 +1,11 @@
 [[plugins]]
 repo = 'itchyny/lightline.vim'
+hook_add = '''
+	set noshowmode
+	let g:lightline = {
+		\ 'colorscheme': 'wombat',
+		\ }
+'''
 
 # for replace
 [[plugins]]
