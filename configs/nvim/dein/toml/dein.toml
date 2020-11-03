@@ -4,6 +4,20 @@ hook_add = '''
 	set noshowmode
 	let g:lightline = {
 		\ 'colorscheme': 'wombat',
+		\ 'active': {
+      \   'left': [ [ 'mode', 'paste' ],
+      \             [ 'readonly', 'filename', 'modified', 'charvaluehex' ] ]
+"			\		,
+"			\   'right': [ [ 'lineinfo' ],
+"      \              [ 'percent' ],
+"      \              [ 'fileformat', 'fileencoding', 'filetype', 'charvaluehex' ] ]
+      \ },
+      \ 'component': {
+			" see :h g:lightline.component
+			"""	truncate the components from the right in narrow windows.
+			\   'lineinfo': '%3l:%-2v%<',
+      \   'charvaluehex': '0x%B'
+      \ },
 		\ }
 '''
 
