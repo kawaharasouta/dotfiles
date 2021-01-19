@@ -118,6 +118,7 @@ freebsd () {
 }
 
 mkdir -p ${DOTFILES_HOME}/tmp
+. ~/.bash/bash_envs
 if [ -e /.dockerenv ]; then
 	docker
 fi
