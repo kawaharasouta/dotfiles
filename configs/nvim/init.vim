@@ -147,6 +147,17 @@ augroup vimrcEx
   \ exe "normal g`\"" | endif
 augroup END
 
+" Launches a terminal at the bottom of the screen at startup
+if has('vim_starting')
+	split
+	wincmd j
+	resize 12
+	terminal
+	" The lower setting doesn't work, so I have to "set nonu" manually.
+	set nonu
+	wincmd k
+endif
+
 " disable set nu when in terminal emu
 augroup FolowTerm
     au!
