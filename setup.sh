@@ -108,8 +108,8 @@ centos () {
 	sudo yum remove vim
 
 	# neovim setup
-	sudo yum install neovim
-	sudo yum install python38    ##### with python38-pip 
+	sudo yum -y install neovim
+	sudo yum -y install python38    ##### with python38-pip 
 	pip3 install -U pip3					#### error ??????
 	pip3 install --user pynvim
 	pip3 install --user neovim
