@@ -104,7 +104,11 @@ centos () {
 	
 	sudo yum update && sudo yum install -y epel-release 
 	sudo yum update && sudo yum install -y wget tmux htop cgdb the_silver_searcher
-	build-vim
+	sudo yum groupinstall "Development Tools"						###### build essentials for centos
+	sudo yum remove vim
+
+	# neovim setup
+	sudo yum install neovim
 }
 
 freebsd () {
