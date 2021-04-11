@@ -109,6 +109,11 @@ centos () {
 
 	# neovim setup
 	sudo yum install neovim
+	sudo yum install python38    ##### with python38-pip 
+	pip3 install -U pip3					#### error ??????
+	pip3 install --user pynvim
+	pip3 install --user neovim
+	sudo ls -s /usr/bin/nvim /usr/bin/vim     #### nannka centos dato katteni rinnku sarenaino
 }
 
 freebsd () {
