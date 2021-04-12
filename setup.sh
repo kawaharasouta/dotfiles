@@ -103,17 +103,26 @@ centos () {
 	echo "centos"
 	
 	sudo yum update && sudo yum install -y epel-release 
-	sudo yum update && sudo yum install -y wget tmux htop cgdb the_silver_searcher
+	sudo yum update && sudo yum install -y wget tmux htop cgdb the_silver_searcher cmake unzip
 	sudo yum groupinstall "Development Tools"						###### build essentials for centos
 	sudo yum remove vim
 
 	# neovim setup
-	sudo yum install neovim
-	sudo yum install python38    ##### with python38-pip 
+	# sudo yum install neovim    ##### too old version
+	# curl -LO https://github.com/neovim/neovim/releases/download/v0.4.4/nvim.appimage
+	# chmod u+x nvim.appimage && ./nvim.appimage
+	# ./nvim.appimage --appimage-extract
+	# ./squashfs-root/usr/bin/nvim
+	# konoatohaitimenndokattakarayameruwa
+	cd ${DOTFILES_HOME}/tmp
+	git clone https://github.com/neovim/neovim.git && cd $_
+	make CMAKE_BUILD_TYPE=RelWithDebInfo
+	sudo make install
+	sudo yum -y install python38    ##### with python38-pip 
 	pip3 install -U pip3					#### error ??????
 	pip3 install --user pynvim
 	pip3 install --user neovim
-	sudo ls -s /usr/bin/nvim /usr/bin/vim     #### nannka centos dato katteni rinnku sarenaino
+	sudo ls -s /usr/local/bin/nvim /usr/bin/vim     #### nannka centos dato katteni rinnku sarenaino
 }
 
 freebsd () {
