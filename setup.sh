@@ -108,7 +108,6 @@ centos () {
 	sudo yum remove vim
 
 	# neovim setup
-<<<<<<< HEAD
 	# sudo yum install neovim    ##### too old version
 	# curl -LO https://github.com/neovim/neovim/releases/download/v0.4.4/nvim.appimage
 	# chmod u+x nvim.appimage && ./nvim.appimage
@@ -119,9 +118,6 @@ centos () {
 	git clone https://github.com/neovim/neovim.git && cd $_
 	make CMAKE_BUILD_TYPE=RelWithDebInfo
 	sudo make install
-=======
-	sudo yum -y install neovim
->>>>>>> 056bfd949c34d2b31e2600447345f80e84d4b084
 	sudo yum -y install python38    ##### with python38-pip 
 	pip3 install -U pip3					#### error ??????
 	pip3 install --user pynvim
