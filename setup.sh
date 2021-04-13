@@ -89,6 +89,11 @@ ubuntu () {
 		pip3 install neovim
 		sudo apt install -y xclip xsel
 	fi
+
+	# for GUI setting
+	if [ $((docker_flag)) -eq 1 ]; then
+		echo "Ubuntu Desktop Setting"
+	fi
 }
 
 mac () {
@@ -109,21 +114,23 @@ centos () {
 	sudo yum remove vim
 
 	# neovim setup
-	# sudo yum install neovim    ##### too old version
-	# curl -LO https://github.com/neovim/neovim/releases/download/v0.4.4/nvim.appimage
-	# chmod u+x nvim.appimage && ./nvim.appimage
-	# ./nvim.appimage --appimage-extract
-	# ./squashfs-root/usr/bin/nvim
-	# konoatohaitimenndokattakarayameruwa
-	cd ${DOTFILES_HOME}/tmp
-	git clone https://github.com/neovim/neovim.git && cd $_
-	make CMAKE_BUILD_TYPE=RelWithDebInfo
-	sudo make install
-	sudo yum -y install python38    ##### with python38-pip 
-	pip3 install -U pip3					#### error ??????
-	pip3 install --user pynvim
-	pip3 install --user neovim
-	sudo ls -s /usr/local/bin/nvim /usr/bin/vim     #### nannka centos dato katteni rinnku sarenaino
+	if [ ! -e /usr/local/bin/nvim ]; then
+		# sudo yum install neovim    ##### too old version
+		# curl -LO https://github.com/neovim/neovim/releases/download/v0.4.4/nvim.appimage
+		# chmod u+x nvim.appimage && ./nvim.appimage
+		# ./nvim.appimage --appimage-extract
+		# ./squashfs-root/usr/bin/nvim
+		# konoatohaitimenndokattakarayameruwa
+		cd ${DOTFILES_HOME}/tmp
+		git clone https://github.com/neovim/neovim.git && cd $_
+		make CMAKE_BUILD_TYPE=RelWithDebInfo
+		sudo make install
+		sudo yum -y install python38    ##### with python38-pip 
+		pip3 install -U pip3					#### error ??????
+		pip3 install --user pynvim
+		pip3 install --user neovim
+		sudo ls -s /usr/local/bin/nvim /usr/bin/vim     #### nannka centos dato katteni rinnku sarenaino
+	fi
 }
 
 freebsd () {
@@ -142,6 +149,11 @@ if [ -e /.dockerenv ]; then
 	docker
 fi
 setup
+echo $1 | env | grep DISPLAY > /dev/null
+if [ "$?" -eq 0 ]; then     
+  echo "has GUI"
+	GUI_FLAG=1
+fi
 case "$(uname)" in
 	Darwin*)	
 		OS=macOS
