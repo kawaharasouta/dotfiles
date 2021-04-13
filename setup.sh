@@ -2,6 +2,7 @@
 
 DOTFILES_HOME=$(pwd)
 OS=
+GUI_FLAG=0
 
 docker () {
 	ln -sf ~/git/dotfiles/configs/bash_profile ~/.bash_profile
