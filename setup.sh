@@ -33,6 +33,7 @@ setup () {
 }
 
 git_setup () {
+	. ~/.bash/bash_envs
 	local path
 	# git basic config
 	git config --global user.name "Kawaharasouta"
