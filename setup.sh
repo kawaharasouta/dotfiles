@@ -16,6 +16,7 @@ docker () {
 }
 
 setup () {
+	# place dotfiles
 	ln -sf ~/git/dotfiles/configs/tmux.conf ~/.tmux.conf
 	ln -sf ~/git/dotfiles/configs/tmux/ ~/.tmux
 	ln -sf ~/git/dotfiles/configs/bashrc ~/.bashrc
@@ -24,6 +25,8 @@ setup () {
 	ln -sf ~/git/dotfiles/configs/vim ~/.vim
 	mkdir -p ~/.config
 	ln -sf ~/git/dotfiles/configs/nvim ~/.config/nvim
+
+	mkdir -p ~/.tmux/log/
 	
 	if [ $((docker_flag)) -eq 1 ]; then
 		echo "set ambiwidth=double" >> ~/.vimrc

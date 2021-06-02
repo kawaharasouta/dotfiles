@@ -1,7 +1,0 @@
-selectp -t 1
-splitw -h
-selectp -t 1
-splitw -v
-selectp -t 1
-resize-pane -R 10 
-resize-pane -U 10
