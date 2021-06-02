@@ -1,11 +1,14 @@
 #!/bin/bash
 
 DOTFILES_HOME=$(pwd)
+CONFIGS_PATH=${DOTFILES_HOME}/configs
+SCRIPTS_PATH=${DOTFILES_HOME}/scripts
+TMP_PATH=${DOTFILES_HOME}/tmp
 OS=
 GUI_FLAG=0
 
 docker () {
-	ln -sf ~/git/dotfiles/configs/bash_profile ~/.bash_profile
+	ln -sf ${CONFIGS_PATH}/bash_profile ~/.bash_profile
 	docker_flag=1
 	if [ $((docker_flag)) -eq 1 ]; then
 		tail_vimrc=`tail -n 1 ~/.vimrc`
@@ -17,14 +20,14 @@ docker () {
 
 setup () {
 	# place dotfiles
-	ln -sf ~/git/dotfiles/configs/tmux.conf ~/.tmux.conf
-	ln -sf ~/git/dotfiles/configs/tmux/ ~/.tmux
-	ln -sf ~/git/dotfiles/configs/bashrc ~/.bashrc
-	ln -sf ~/git/dotfiles/configs/bash ~/.bash
-	ln -sf ~/git/dotfiles/configs/vimrc ~/.vimrc
-	ln -sf ~/git/dotfiles/configs/vim ~/.vim
+	ln -sf ${CONFIGS_PATH}/tmux.conf ~/.tmux.conf
+	ln -sf ${CONFIGS_PATH}/tmux/ ~/.tmux
+	ln -sf ${CONFIGS_PATH}/bashrc ~/.bashrc
+	ln -sf ${CONFIGS_PATH}/bash ~/.bash
+	ln -sf ${CONFIGS_PATH}/vimrc ~/.vimrc
+	ln -sf ${CONFIGS_PATH}/vim ~/.vim
 	mkdir -p ~/.config
-	ln -sf ~/git/dotfiles/configs/nvim ~/.config/nvim
+	ln -sf ${CONFIGS_PATH}/nvim ~/.config/nvim
 
 	mkdir -p ~/.tmux/log/
 	
@@ -49,7 +52,7 @@ git_setup () {
 		echo "FreeBSD gitignore_Global setting is not supported."
 		return
 	fi
-	path=${DOTFILES_HOME}/tmp/gitignore
+	path=${TMP_PATH}/gitignore
 	mkdir -p ${path} && cd $_
 	git init 
 	git config core.sparsecheckout true
@@ -125,7 +128,7 @@ centos () {
 		# ./nvim.appimage --appimage-extract
 		# ./squashfs-root/usr/bin/nvim
 		# konoatohaitimenndokattakarayameruwa
-		cd ${DOTFILES_HOME}/tmp
+		cd ${TMP_PATH}
 		git clone https://github.com/neovim/neovim.git && cd $_
 		make CMAKE_BUILD_TYPE=RelWithDebInfo
 		sudo make install
@@ -147,7 +150,7 @@ freebsd () {
 	echo "and reboot."
 }
 
-mkdir -p ${DOTFILES_HOME}/tmp
+mkdir -p ${TMP_PATH}
 . ~/.bash/bash_envs
 if [ -e /.dockerenv ]; then
 	docker
@@ -178,4 +181,4 @@ case "$(uname)" in
 	*)				echo "unknown OS"
 esac
 git_setup
-rm -rf ${DOTFILES_HOME}/tmp
+rm -rf ${TMP_PATH}
