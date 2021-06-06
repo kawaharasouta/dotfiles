@@ -1,5 +1,6 @@
 #!/bin/bash
 
+source ~/.bash/bash_envs
 DOTFILES_HOME=$(pwd)
 CONFIGS_PATH=${DOTFILES_HOME}/configs
 SCRIPTS_PATH=${DOTFILES_HOME}/scripts
