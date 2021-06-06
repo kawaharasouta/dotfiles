@@ -19,25 +19,25 @@ docker () {
 	fi
 }
 
-setup () {
-	# place dotfiles
-	ln -sf ${CONFIGS_PATH}/tmux.conf ~/.tmux.conf
-	ln -sf ${CONFIGS_PATH}/tmux/ ~/.tmux
-	ln -sf ${CONFIGS_PATH}/bashrc ~/.bashrc
-	ln -sf ${CONFIGS_PATH}/bash ~/.bash
-	ln -sf ${CONFIGS_PATH}/vimrc ~/.vimrc
-	ln -sf ${CONFIGS_PATH}/vim ~/.vim
-	mkdir -p ~/.config
-	ln -sf ${CONFIGS_PATH}/nvim ~/.config/nvim
+# setup () {
+# 	# place dotfiles
+# 	ln -sf ${CONFIGS_PATH}/tmux.conf ~/.tmux.conf
+# 	ln -sf ${CONFIGS_PATH}/tmux/ ~/.tmux
+# 	ln -sf ${CONFIGS_PATH}/bashrc ~/.bashrc
+# 	ln -sf ${CONFIGS_PATH}/bash ~/.bash
+# 	ln -sf ${CONFIGS_PATH}/vimrc ~/.vimrc
+# 	ln -sf ${CONFIGS_PATH}/vim ~/.vim
+# 	mkdir -p ~/.config
+# 	ln -sf ${CONFIGS_PATH}/nvim ~/.config/nvim
 
-	mkdir -p ~/.tmux/log/
+# 	mkdir -p ~/.tmux/log/
 	
-	if [ $((docker_flag)) -eq 1 ]; then
-		echo "set ambiwidth=double" >> ~/.vimrc
-	fi
+# 	if [ $((docker_flag)) -eq 1 ]; then
+# 		echo "set ambiwidth=double" >> ~/.vimrc
+# 	fi
 	
-	source ~/.bashrc
-}
+# 	source ~/.bashrc
+# }
 
 git_setup () {
 	. ~/.bash/bash_envs
@@ -154,9 +154,10 @@ freebsd () {
 mkdir -p ${TMP_PATH}
 . ~/.bash/bash_envs
 if [ -e /.dockerenv ]; then
-	docker
+	source ${SCRIPTS_PATH}/misc/docker.sh
 fi
-setup
+source ${SCRIPTS_PATH}/misc/dots.sh
+source ${SCRIPTS_PATH}/misc/git.sh
 echo $1 | env | grep DISPLAY > /dev/null
 if [ "$?" -eq 0 ]; then     
   echo "has GUI"
@@ -181,5 +182,4 @@ case "$(uname)" in
 		freebsd ;;
 	*)				echo "unknown OS"
 esac
-git_setup
 rm -rf ${TMP_PATH}
