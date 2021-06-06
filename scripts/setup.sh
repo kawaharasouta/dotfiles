@@ -152,7 +152,6 @@ freebsd () {
 }
 
 mkdir -p ${TMP_PATH}
-. ~/.bash/bash_envs
 if [ -e /.dockerenv ]; then
 	source ${SCRIPTS_PATH}/misc/docker.sh
 fi
