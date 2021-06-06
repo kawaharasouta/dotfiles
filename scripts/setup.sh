@@ -157,7 +157,6 @@ if [ -e /.dockerenv ]; then
 	source ${SCRIPTS_PATH}/misc/docker.sh
 fi
 source ${SCRIPTS_PATH}/misc/dots.sh
-source ${SCRIPTS_PATH}/misc/git.sh
 echo $1 | env | grep DISPLAY > /dev/null
 if [ "$?" -eq 0 ]; then     
   echo "has GUI"
@@ -182,4 +181,5 @@ case "$(uname)" in
 		freebsd ;;
 	*)				echo "unknown OS"
 esac
+source ${SCRIPTS_PATH}/misc/git.sh
 rm -rf ${TMP_PATH}
