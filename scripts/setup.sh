@@ -8,62 +8,6 @@ TMP_PATH=${DOTFILES_HOME}/tmp
 OS=
 GUI_FLAG=0
 
-docker () {
-	ln -sf ${CONFIGS_PATH}/bash_profile ~/.bash_profile
-	docker_flag=1
-	if [ $((docker_flag)) -eq 1 ]; then
-		tail_vimrc=`tail -n 1 ~/.vimrc`
-		if [ "${tail_vimrc}" = "set ambiwidth=double" ]; then
-			docker_flag=0
-		fi
-	fi
-}
-
-# setup () {
-# 	# place dotfiles
-# 	ln -sf ${CONFIGS_PATH}/tmux.conf ~/.tmux.conf
-# 	ln -sf ${CONFIGS_PATH}/tmux/ ~/.tmux
-# 	ln -sf ${CONFIGS_PATH}/bashrc ~/.bashrc
-# 	ln -sf ${CONFIGS_PATH}/bash ~/.bash
-# 	ln -sf ${CONFIGS_PATH}/vimrc ~/.vimrc
-# 	ln -sf ${CONFIGS_PATH}/vim ~/.vim
-# 	mkdir -p ~/.config
-# 	ln -sf ${CONFIGS_PATH}/nvim ~/.config/nvim
-
-# 	mkdir -p ~/.tmux/log/
-	
-# 	if [ $((docker_flag)) -eq 1 ]; then
-# 		echo "set ambiwidth=double" >> ~/.vimrc
-# 	fi
-	
-# 	source ~/.bashrc
-# }
-
-git_setup () {
-	. ~/.bash/bash_envs
-	local path
-	# git basic config
-	git config --global user.name "Kawaharasouta"
-	git config --global user.email "kawahara6514@gmail.com"
-	git config --global core.editor 'vim -c "set fenc=utf-8"'
-
-	# gitignore global setting
-	### FreeBSD ha taiou sitenai
-	if [ -z ${OS} ] ; then
-		echo "FreeBSD gitignore_Global setting is not supported."
-		return
-	fi
-	path=${TMP_PATH}/gitignore
-	mkdir -p ${path} && cd $_
-	git init 
-	git config core.sparsecheckout true
-	git remote add origin https://github.com/github/gitignore.git
-	echo Global > .git/info/sparse-checkout
-	git pull origin master
-	mkdir -p ${XDG_CONFIG_HOME}/git
-	cat ${path}/Global/${OS}.gitignore ${path}/Global/Vim.gitignore >> ${XDG_CONFIG_HOME}/git/ignore
-	cd ${DOTFILES_HOME}
-}
 
 build-vim () {
 	mkdir ~/tmp/ && git clone https://github.com/vim/vim.git ~/tmp/vim -b v8.2.0000 
