@@ -1,65 +1,13 @@
 #!/bin/bash
 
+source ~/git/dotfiles/configs/bash/bash_envs
 DOTFILES_HOME=$(pwd)
+CONFIGS_PATH=${DOTFILES_HOME}/configs
+SCRIPTS_PATH=${DOTFILES_HOME}/scripts
+TMP_PATH=${DOTFILES_HOME}/tmp
 OS=
 GUI_FLAG=0
 
-docker () {
-	ln -sf ~/git/dotfiles/configs/bash_profile ~/.bash_profile
-	docker_flag=1
-	if [ $((docker_flag)) -eq 1 ]; then
-		tail_vimrc=`tail -n 1 ~/.vimrc`
-		if [ "${tail_vimrc}" = "set ambiwidth=double" ]; then
-			docker_flag=0
-		fi
-	fi
-}
-
-setup () {
-	# place dotfiles
-	ln -sf ~/git/dotfiles/configs/tmux.conf ~/.tmux.conf
-	ln -sf ~/git/dotfiles/configs/tmux/ ~/.tmux
-	ln -sf ~/git/dotfiles/configs/bashrc ~/.bashrc
-	ln -sf ~/git/dotfiles/configs/bash ~/.bash
-	ln -sf ~/git/dotfiles/configs/vimrc ~/.vimrc
-	ln -sf ~/git/dotfiles/configs/vim ~/.vim
-	mkdir -p ~/.config
-	ln -sf ~/git/dotfiles/configs/nvim ~/.config/nvim
-
-	mkdir -p ~/.tmux/log/
-	
-	if [ $((docker_flag)) -eq 1 ]; then
-		echo "set ambiwidth=double" >> ~/.vimrc
-	fi
-	
-	source ~/.bashrc
-}
-
-git_setup () {
-	. ~/.bash/bash_envs
-	local path
-	# git basic config
-	git config --global user.name "Kawaharasouta"
-	git config --global user.email "kawahara6514@gmail.com"
-	git config --global core.editor 'vim -c "set fenc=utf-8"'
-
-	# gitignore global setting
-	### FreeBSD ha taiou sitenai
-	if [ -z ${OS} ] ; then
-		echo "FreeBSD gitignore_Global setting is not supported."
-		return
-	fi
-	path=${DOTFILES_HOME}/tmp/gitignore
-	mkdir -p ${path} && cd $_
-	git init 
-	git config core.sparsecheckout true
-	git remote add origin https://github.com/github/gitignore.git
-	echo Global > .git/info/sparse-checkout
-	git pull origin master
-	mkdir -p ${XDG_CONFIG_HOME}/git
-	cat ${path}/Global/${OS}.gitignore ${path}/Global/Vim.gitignore >> ${XDG_CONFIG_HOME}/git/ignore
-	cd ${DOTFILES_HOME}
-}
 
 build-vim () {
 	mkdir ~/tmp/ && git clone https://github.com/vim/vim.git ~/tmp/vim -b v8.2.0000 
@@ -125,7 +73,7 @@ centos () {
 		# ./nvim.appimage --appimage-extract
 		# ./squashfs-root/usr/bin/nvim
 		# konoatohaitimenndokattakarayameruwa
-		cd ${DOTFILES_HOME}/tmp
+		cd ${TMP_PATH}
 		git clone https://github.com/neovim/neovim.git && cd $_
 		make CMAKE_BUILD_TYPE=RelWithDebInfo
 		sudo make install
@@ -147,12 +95,11 @@ freebsd () {
 	echo "and reboot."
 }
 
-mkdir -p ${DOTFILES_HOME}/tmp
-. ~/.bash/bash_envs
+mkdir -p ${TMP_PATH}
 if [ -e /.dockerenv ]; then
-	docker
+	source ${SCRIPTS_PATH}/misc/docker.sh
 fi
-setup
+source ${SCRIPTS_PATH}/misc/dots.sh
 echo $1 | env | grep DISPLAY > /dev/null
 if [ "$?" -eq 0 ]; then     
   echo "has GUI"
@@ -177,5 +124,5 @@ case "$(uname)" in
 		freebsd ;;
 	*)				echo "unknown OS"
 esac
-git_setup
-rm -rf ${DOTFILES_HOME}/tmp
+source ${SCRIPTS_PATH}/misc/git.sh
+rm -rf ${TMP_PATH}
