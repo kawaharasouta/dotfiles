@@ -6,8 +6,28 @@ CONFIGS_PATH=${DOTFILES_HOME}/configs
 SCRIPTS_PATH=${DOTFILES_HOME}/scripts
 TMP_PATH=${DOTFILES_HOME}/tmp
 OS=
+DISTRO=
+DOT_ONLY=0
 GUI_FLAG=0
 
+usage () {
+	cat << EOF    
+Usage: $(basename "$0") [OPTION]...    
+    
+[OPTION]    
+  -h, --help                Display this help    
+  -f, --dot-only            If you want setup dotfiles only, then u should use this option.
+  -d, --distro=DISTRONAME   U can Specify distributions or some Unix systems.    
+                            This script automatically detect what the system is without using
+                            this optinon.    
+                            Please see DISTRONAME section what distributions you can specify.
+    
+[DISTRONAME]
+  comming soon..
+EOF
+
+  exit 0
+}
 
 build-vim () {
 	mkdir ~/tmp/ && git clone https://github.com/vim/vim.git ~/tmp/vim -b v8.2.0000 
@@ -95,13 +115,46 @@ freebsd () {
 	echo "and reboot."
 }
 
+opts=`getopt --name "$0" --options hfd: --long help,dot-only,distro: -- "$@"` || usage
+eval set -- "$opts"
+unset opts
+
+while [ -- != "$1" ]; do
+  case "$1" in
+    -h | --help)
+      usage 
+      ;;
+    -f | --dot-only)
+      DOT_ONLY=1
+      ;;
+    -d | --distro)
+      shift
+      DISTRO="$1" 
+      ;;
+    *)
+			echo "internal error"
+			exit 1
+      ;;
+  esac
+  shift 
+done
+# remove "--"
+shift
+
+
 mkdir -p ${TMP_PATH}
+source ${SCRIPTS_PATH}/misc/dots.sh
+source ${SCRIPTS_PATH}/misc/git.sh
+if [ $DOT_ONLY -eq 1 ]; then
+	rm -rf ${TMP_PATH}
+	exit 0
+fi
+
 if [ -e /.dockerenv ]; then
 	source ${SCRIPTS_PATH}/misc/docker.sh
 fi
-source ${SCRIPTS_PATH}/misc/dots.sh
 echo $1 | env | grep DISPLAY > /dev/null
-if [ "$?" -eq 0 ]; then     
+if [ "$?" -eq 0 ]; then
   echo "has GUI"
 	GUI_FLAG=1
 fi
@@ -124,5 +177,5 @@ case "$(uname)" in
 		freebsd ;;
 	*)				echo "unknown OS"
 esac
-source ${SCRIPTS_PATH}/misc/git.sh
 rm -rf ${TMP_PATH}
+
