@@ -16,6 +16,7 @@ $ ./scripts/setup.sh
 
 ### description
 
+```
 dotfiles
  |
  |-- README.md
@@ -32,5 +33,6 @@ dotfiles
       ...
  |
  |-- bin: some my scripts, tools, programs.
+```
 
 
