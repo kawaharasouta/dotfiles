@@ -1,0 +1,49 @@
+#!/bin/bash
+
+ORIGIN=
+CLONE=
+
+usage () {
+	cat << EOF    
+Usage: $(basename "$0") [OPTION]...    
+    
+[OPTION]    
+  -h, --help                Display this help    
+  -o, --origin	            Name of original vm to clone
+  -c, --clone								Target name of vm to clone 
+    
+EOF
+
+  exit 0
+}
+
+opts=`getopt --name "$0" --options ho:c: --long help,origin:,clone: -- "$@"` || usage
+eval set -- "$opts"
+unset opts
+
+while [ -- != "$1" ]; do
+  case "$1" in
+    -h | --help)
+      usage 
+      ;;
+    -o | --origin)
+      shift
+      ORIGIN="$1"
+      ;;
+    -c | --clone)
+      shift
+      CLONE="$1" 
+      ;;
+    *)
+			echo "internal error"
+			exit 1
+      ;;
+  esac
+  shift 
+done
+# remove "--"
+shift
+
+
+echo $ORIGIN
+echo $CLONE
