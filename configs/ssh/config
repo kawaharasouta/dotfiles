@@ -1,0 +1,134 @@
+### format example ###
+#Host [hostname(custom)]
+#	HostName [address or domain]
+#	User [username]
+#	IdentityFile [path to secretkey]
+#	Port [port number]
+#	TCPKeepAlive yes								// enable TCP Keep Alive
+#	ServerAliveInterval 60					// time interval of TCP Keep Alive
+#	IdentitiesOnly yes							// Limit ssh-agent key usage to that specified in the file
+#	ForwardAgent yes								// ssh-agent
+#	ProxyCommand ssh [step server name] -W %h:%p		// step server setting
+
+Host monster-homelab
+  HostName 192.168.11.10
+  User khwarizmi
+  IdentityFile ~/.ssh/home_rsa
+  Port 22
+  TCPKeepAlive yes 
+  ServerAliveInterval 60
+  ForwardAgent yes 
+  IdentitiesOnly yes
+
+Host jk4
+  HostName labnet4.dpdk.ninja
+  #133.25.196.25
+  User khwarizmi
+  IdentityFile ~/.ssh/home_rsa
+  Port 22
+  TCPKeepAlive yes 
+  ServerAliveInterval 60
+  ForwardAgent yes 
+  IdentitiesOnly yes
+
+Host jk4-step
+  HostName labnet4.dpdk.ninja
+  #133.25.196.25
+  User khwarizmi
+  IdentityFile ~/.ssh/home_rsa
+  Port 22
+  TCPKeepAlive yes 
+  ServerAliveInterval 60
+  ForwardAgent yes 
+  IdentitiesOnly yes
+	ProxyCommand ssh jk8 -W %h:%p
+
+Host jk6 
+  HostName labnet5.dpdk.ninja
+  #133.25.196.26
+  User khwarizmi
+  IdentityFile ~/.ssh/home_rsa
+  Port 22
+  TCPKeepAlive yes 
+  ServerAliveInterval 60
+  ForwardAgent yes 
+  IdentitiesOnly yes 
+  
+Host kernel-exp
+  HostName 133.25.196.21
+  User khwarizmi
+  Port 22
+  TCPKeepAlive yes 
+  ServerAliveInterval 60
+
+Host jk8 
+  HostName labnet3.dpdk.ninja
+  #133.25.196.24
+  User khwarizmi
+  IdentityFile ~/.ssh/home_rsa
+  Port 22
+  TCPKeepAlive yes 
+  ServerAliveInterval 60
+  ForwardAgent yes 
+  IdentitiesOnly yes 
+#ipmi
+  #133.25.196.22 (labnet1.dpdk.ninja)
+
+#Host jk-monster 
+#  HostName 133.25.196.23
+#  User khwarizmi
+#  IdentityFile ~/.ssh/home_rsa
+#  Port 22
+#  TCPKeepAlive yes 
+#  ServerAliveInterval 60
+#  ForwardAgent yes 
+#  IdentitiesOnly yes 
+
+Host work 
+  HostName geregere.work
+	#149.28.30.191
+  User khwarizmi
+  IdentityFile ~/.ssh/home_rsa
+  Port 22
+  TCPKeepAlive yes 
+  ServerAliveInterval 60
+  ForwardAgent yes 
+  IdentitiesOnly yes 
+
+Host cross_work 
+  HostName cross.geregere.work
+	#116.80.41.144
+  User khwarizmi
+  IdentityFile ~/.ssh/home_rsa
+  Port 22
+  TCPKeepAlive yes 
+  ServerAliveInterval 60
+  ForwardAgent yes 
+  IdentitiesOnly yes 
+
+Host homelab 
+  HostName 192.168.2.200
+  User khwarizmi
+  IdentityFile ~/.ssh/home_rsa
+  Port 22
+  TCPKeepAlive yes 
+  ServerAliveInterval 60
+  ForwardAgent yes 
+  IdentitiesOnly yes 
+
+Host ssh-agent-fedora34 
+  HostName 192.168.122.64
+  User khwarizmi
+  IdentityFile ~/.ssh/home_rsa
+  Port 22
+  TCPKeepAlive yes
+  ServerAliveInterval 60
+  ForwardAgent yes
+  IdentitiesOnly yes
+
+
+Host github.com
+  HostName github.com
+  User git
+  IdentityFile ~/.ssh/home_rsa
+
