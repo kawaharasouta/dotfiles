@@ -122,8 +122,12 @@ inoremap <Right> <Nop>
 "nnoremap <silent> O :<C-u>call append(expand('.'), '')<Cr>j
 
 " tab move
-nnoremap <Tab>l gt
-nnoremap <Tab>h gT
+" nnoremap <Tab>l gt
+" nnoremap <Tab>h gT
+" allow moveing tab without save.
+""" lua.init example: vim.o.hidden = true
+""" Add it in dein.toml hook.
+""" set hidden
 
 " when in terminal mode, enable esc
 tnoremap <silent> <ESC> <C-\><C-n>
@@ -147,19 +151,22 @@ augroup vimrcEx
   \ exe "normal g`\"" | endif
 augroup END
 
-" Launches a terminal at the bottom of the screen at startup
-if has('vim_starting')
-	split
-	wincmd j
-	resize 12
-	terminal
-	" The lower setting doesn't work, so I have to "set nonu" manually.
-	set nonu
-	wincmd k
-endif
+" " Launches a terminal at the bottom of the screen at startup
+" if has('vim_starting')
+" 	split
+" 	wincmd j
+" 	resize 12
+" 	terminal
+" 	" The lower setting doesn't work, so I have to "set nonu" manually.
+" 	set nonu
+" 	wincmd k
+" endif
 
 " disable set nu when in terminal emu
 augroup FolowTerm
     au!
     au TermOpen * setlocal nonumber
 augroup END
+
+"close help window 'q'
+autocmd FileType help nnoremap <buffer> q <C-w>c

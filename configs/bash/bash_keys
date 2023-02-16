@@ -1,4 +1,4 @@
-bind '"\C-h": backward-char'
-bind '"\C-l": forward-char'
-bind '"\C-j": next-history'
-bind '"\C-k": previous-history'
+# bind '"\C-h": backward-char'
+# bind '"\C-l": forward-char'
+# bind '"\C-j": next-history'
+# bind '"\C-k": previous-history'

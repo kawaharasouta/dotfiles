@@ -45,6 +45,15 @@ hook_add = '''
 	set helplang=ja
 '''
 
+[[plugins]]
+repo = 'ap/vim-buftabline'
+hook_add = '''
+	set hidden
+	" nnoremap <C-N> :bnext<CR>
+	" nnoremap <C-P> :bprev<CR>
+	nnoremap <Tab>l :bnext<CR>
+	nnoremap <Tab>h :bprev<CR>
+'''
 
 ###[[plugins]]
 ###repo = 'scrooloose/nerdtree'
