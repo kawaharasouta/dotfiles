@@ -9,8 +9,32 @@ alias l='ls -CF'
 #tmux 
 #Attach at runtime. Start and split if there is no session.
 if [ $SHLVL = 1 ]; then
-	alias tn="tmux new-session \; source-file ~/.tmux/session"
-	alias tls="tmux ls"
-	alias ta="tmux attach "
+	# alias tn="tmux new-session \; source-file ~/.tmux/session"
+	# alias tls="tmux ls"
+	# alias ta="tmux attach "
+	# function tn () {
+
+	# }
+	function ts () {
+		test $TMUX_TMPDIR || TMUX_TMPDIR=/tmp
+		ls $TMUX_TMPDIR/tmux-`id -u`
+	}
+	function tls () {
+		# test ! $1 || tmux -L $1 ls
+		# test $1 || (echo "usage: tls [socket name]" && return 1)
+		if test -z $1; then
+			echo "usage: tls [socket name]"
+			return 1
+		fi
+		tmux -L $1 ls
+	}
+	function ta () {
+		# test $1 || (echo "usage: ta [socket name]" && return 1)
+		if test -z $1; then
+			echo "usage: ta [socket name]"
+			return 1
+		fi
+		tmux -L $1 a
+	}
 fi
 

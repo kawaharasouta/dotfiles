@@ -115,6 +115,11 @@ if [ -f $bash_conf_dir/bash_envs ]; then
 	. $bash_conf_dir/bash_envs
 fi
 
+# my bash completion
+if [ -f $bash_conf_dir/bash_completion ]; then
+	. $bash_conf_dir/bash_completion
+fi
+
 # enable programmable completion features (you don't need to enable
 # this, if it's already enabled in /etc/bash.bashrc and /etc/profile
 # sources /etc/bash.bashrc).

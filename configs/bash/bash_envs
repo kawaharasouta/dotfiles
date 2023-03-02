@@ -29,4 +29,6 @@ export XDG_CACHE_HOME=/home/khwarizmi/.cache
 # export XDG_DATA_DIRS=/home/khwarizmi/.cache
 # export XDG_CONFIG_DIRS=/home/khwarizmi/.cache
 
+# tmux sockets dir
+export TMUX_TMPDIR=/var/lib/tmux_sockets
 
