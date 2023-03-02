@@ -105,7 +105,6 @@ if [ -f $bash_conf_dir/bash_aliases ]; then
 fi
 
 # my key bind
-
 if [ -f $bash_conf_dir/bash_keys ]; then
 	. $bash_conf_dir/bash_keys
 fi
@@ -118,6 +117,11 @@ fi
 # my bash completion
 if [ -f $bash_conf_dir/bash_completion ]; then
 	. $bash_conf_dir/bash_completion
+fi
+
+# load local config
+if [ -f ~/.bashrc_local ]; then
+	. ~/.bashrc
 fi
 
 # enable programmable completion features (you don't need to enable
