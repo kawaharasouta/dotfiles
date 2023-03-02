@@ -121,7 +121,7 @@ fi
 
 # load local config
 if [ -f ~/.bashrc_local ]; then
-	. ~/.bashrc
+	. ~/.bashrc_local
 fi
 
 # enable programmable completion features (you don't need to enable
