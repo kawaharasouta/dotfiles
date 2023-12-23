@@ -94,10 +94,11 @@ centos () {
 		# ./squashfs-root/usr/bin/nvim
 		# konoatohaitimenndokattakarayameruwa
 		cd ${TMP_PATH}
-		git clone https://github.com/neovim/neovim.git && cd $_
+		git clone https://github.com/neovim/neovim.git
+		cd neovim
 		make CMAKE_BUILD_TYPE=RelWithDebInfo
 		sudo make install
-		sudo yum -y install python38    ##### with python38-pip 
+		sudo yum -y install python3    ##### with python38-pip 
 		pip3 install -U pip3					#### error ??????
 		pip3 install --user pynvim
 		pip3 install --user neovim
