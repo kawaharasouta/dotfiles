@@ -145,6 +145,7 @@ shift
 
 mkdir -p ${TMP_PATH}
 source ${SCRIPTS_PATH}/misc/dots.sh
+source ${SCRIPTS_PATH}/misc/xdg_config.sh
 source ${SCRIPTS_PATH}/misc/git.sh
 if [ $DOT_ONLY -eq 1 ]; then
 	rm -rf ${TMP_PATH}
