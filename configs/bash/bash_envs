@@ -30,5 +30,20 @@ export XDG_CACHE_HOME=/home/khwarizmi/.cache
 # export XDG_CONFIG_DIRS=/home/khwarizmi/.cache
 
 # tmux sockets dir
+### when using fedora38, TMPDIR is difference. Other setting is enabled i think.
 export TMUX_TMPDIR=/var/lib/tmux_sockets
+
+
+
+
+
+##### For Desktop Settings #####
+# caps setting.
+export XKB_DEFAULT_OPTIONS=ctrl:nocaps
+#ibus envs
+export GTK_IM_MODULE=ibus
+export XMODIFIERS=@im=ibus
+export QT_IM_MODULE=ibus
+##### Need to start ibus-daemon
+##### ibus-daemon -drx
 
