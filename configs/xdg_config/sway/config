@@ -22,6 +22,8 @@ set $term kitty
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
 set $menu dmenu_path | dmenu | xargs swaymsg exec --
+# Your preferred screenlock utility
+set $lock swaylock
 
 ### Output configuration
 #
@@ -69,7 +71,7 @@ input type:touchpad natural_scroll enabled
 #
     # Start a terminal
     #bindsym $mod+Return exec $term
-    bindsym $mod+x exec $term
+    bindsym $mod+t exec $term
 
     # Kill focused window
     bindsym $mod+Shift+q kill
@@ -89,6 +91,12 @@ input type:touchpad natural_scroll enabled
 
     # Exit sway (logs you out of your Wayland session)
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
+
+    # Lock your screen
+		# ### keycodeinfo.....
+		# ### command: showkeys, dumpkeys, ...
+		bindsym $mod+semicolon exec $lock
+
 #
 # Moving around:
 #
