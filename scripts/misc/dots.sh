@@ -24,6 +24,9 @@ ln -sf ${CONFIGS_PATH}/nvim ~/.config/nvim
 if [ ! -f ~/.config/nvim/local.vim ]; then
     cp ${CONFIGS_PATH}/nvim/.local.vim.template ~/.config/nvim/local.vim
 fi
+if [ ! -f ~/.config/nvim/dein/toml/dein_local.toml ]; then
+    cp ${CONFIGS_PATH}/nvim/dein/toml/.dein_local.toml.template ~/.config/nvim/dein/toml/dein_local.toml
+fi
 
 
 if [ $((docker_flag)) -eq 1 ]; then
