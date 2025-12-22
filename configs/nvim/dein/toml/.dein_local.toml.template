@@ -1,0 +1,8 @@
+# dein_local.toml - Machine-specific Neovim plugins
+# This file is tracked as a template but local changes are ignored
+#
+# Add your machine-specific plugins below:
+#
+# [[plugins]]
+# repo = 'username/plugin-name'
+
