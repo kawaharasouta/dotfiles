@@ -21,6 +21,9 @@ ln -sf ${CONFIGS_PATH}/vimrc ~/.vimrc
 ln -sf ${CONFIGS_PATH}/vim ~/.vim
 ### neovim configs
 ln -sf ${CONFIGS_PATH}/nvim ~/.config/nvim
+if [ ! -f ~/.config/nvim/local.vim ]; then
+    cp ${CONFIGS_PATH}/nvim/.local.vim.template ~/.config/nvim/local.vim
+fi
 
 
 if [ $((docker_flag)) -eq 1 ]; then

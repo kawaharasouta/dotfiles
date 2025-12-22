@@ -170,3 +170,8 @@ augroup END
 
 "close help window 'q'
 autocmd FileType help nnoremap <buffer> q <C-w>c
+
+" Load local config
+if filereadable(expand('~/.config/nvim/local.vim'))
+  source ~/.config/nvim/local.vim
+endif
