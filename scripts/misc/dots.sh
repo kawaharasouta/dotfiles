@@ -15,6 +15,9 @@ ln -sf ${CONFIGS_PATH}/tmux/ ~/.tmux
 ### bash dotfiles
 ln -sf ${CONFIGS_PATH}/bashrc ~/.bashrc
 ln -sf ${CONFIGS_PATH}/bash ~/.bash
+if [ ! -f ~/.bashrc_local ]; then
+    cp ${CONFIGS_PATH}/bashrc_local.template ~/.bashrc_local
+fi
 #ln -sf ~/.bash/bash_completion ${XDG_CONFIG_HOME}/bash_completion
 ### vim dotfiles
 ln -sf ${CONFIGS_PATH}/vimrc ~/.vimrc
