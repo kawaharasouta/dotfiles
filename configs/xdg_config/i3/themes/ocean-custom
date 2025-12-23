@@ -1,0 +1,41 @@
+### Ocean Custom Color Theme
+set $background #2b303b
+set $foreground #c0c5ce
+set $secondary #3f4751
+set $black #2b303b
+set $red #bf616a
+set $green #a3be8c
+set $yellow #ebcb8b
+set $blue #8fa1b3
+set $magenta #b48ead
+set $cyan #96b5b4
+set $white #c0c5ce
+set $comment #65737e
+
+# # Window colors
+# # class                 border      bground     text        indicator   child_border
+# client.focused          #83CAFA     #51A2DA     #FFFFFF     #83CAFA     #51A2DA
+# client.focused_inactive #8C8C8C     #4C4C4C     #FFFFFF     #4C4C4C     #8C8C8C
+# client.unfocused        #4C4C4C     #222222     #888888     #292D2E     #222222
+# client.urgent           #EC69A0     #DB3279     #FFFFFF     #DB3279     #DB3279
+# client.placeholder      #000000     #0C0C0C     #FFFFFF     #000000     #0C0C0C
+# client.background       #FFFFFF
+
+# # Window colors
+# # class                 border      bground     text        indicator   child_border
+# client.focused          $blue       $blue       $background $blue       $blue
+# client.focused_inactive $secondary  $secondary  $foreground $secondary  $secondary
+# client.unfocused        $background $background $comment    $background $background
+# client.urgent           $red        $red        $foreground $red        $red
+# client.placeholder      $background $background $foreground $background $background
+# client.background       $foreground
+
+
+# Window colors
+# class                 border      bground     text        indicator   child_border
+client.focused          $cyan       $blue       $white      $cyan       $blue
+client.focused_inactive $comment    $secondary  $foreground $secondary  $comment
+client.unfocused        $secondary  $background $comment    $background $background
+client.urgent           $magenta    $red        $white      $red        $magenta
+client.placeholder      $black      $black      $foreground $black      $black
+client.background       $foreground

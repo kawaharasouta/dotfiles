@@ -1,0 +1,48 @@
+# i3blocks configuration file
+#
+# The i3blocks man page describes the usage of the binary,
+# and its website describes the configuration:
+#
+#     https://vivien.github.io/i3blocks
+
+
+# Global properties
+separator=true
+separator_block_width=15
+markup=pango
+
+[memory]
+command=~/.config/i3blocks/scripts/memory
+#label=MEM
+label= 
+interval=30
+
+[swap]
+command=~/.config/i3blocks/scripts/memory
+label= 
+instance=swap
+interval=30
+
+[battery]
+command=STATUS=$(cat /sys/class/power_supply/BAT*/status); CAP=$(cat /sys/class/power_supply/BAT*/capacity); [ "$STATUS" = "Charging" ] && printf '\uf0e7 ' || printf '\uf240 '; echo "${CAP}%"
+interval=30
+
+[volume]
+command=pactl get-sink-mute @DEFAULT_SINK@ | grep -q yes && printf '\uf1f6 ' || printf '\uf028 '; pactl get-sink-volume @DEFAULT_SINK@ | awk '{print $5}'
+interval=once
+signal=11
+
+[blightness]
+command=brightnessctl -m | cut -d, -f4
+label=☀ 
+interval=once
+signal=10
+
+[calendar]
+command=~/.config/i3blocks/scripts/calendar
+interval=1
+LABEL= 
+DATEFMT=+%Y-%m-%d %H:%M:%S
+# SHORTFMT=+%H:%M:%S
+# HEIGHT=180
+# WIDTH=220

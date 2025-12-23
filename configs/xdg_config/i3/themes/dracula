@@ -1,0 +1,23 @@
+### Dracula Color Theme
+set $background #282A36
+set $foreground #F8F8F2
+set $secondary #44475A
+set $black #282A36
+set $red #FF5555
+set $green #50FA7B
+set $yellow #F1FA8C
+set $blue #BD93F9
+set $magenta #FF79C6
+set $cyan #8BE9FD
+set $white #F8F8F2
+set $comment #6272A4
+
+# Window colors
+# class                 border      bground     text        indicator   child_border
+client.focused          $blue       $blue       $background $blue       $blue
+client.focused_inactive $secondary  $secondary  $foreground $secondary  $secondary
+client.unfocused        $background $background $comment    $background $background
+client.urgent           $red        $red        $foreground $red        $red
+client.placeholder      $background $background $foreground $background $background
+client.background       $foreground
+
