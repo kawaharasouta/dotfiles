@@ -8,6 +8,9 @@ mkdir -p ${XDG_CONFIG_HOME}
 
 ##### i3 configs #####
 ln -sf ${CONFIGS_PATH}/xdg_config/i3 ${XDG_CONFIG_HOME}/i3
+if [ ! -f ${XDG_CONFIG_HOME}/i3/local.conf ]; then
+    cp ${CONFIGS_PATH}/xdg_config/i3/.local.conf.template ${XDG_CONFIG_HOME}/i3/local.conf
+fi
 ##### i3blocks configs #####
 ln -sf ${CONFIGS_PATH}/xdg_config/i3blocks ${XDG_CONFIG_HOME}/i3blocks
 
