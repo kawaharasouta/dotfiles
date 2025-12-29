@@ -7,18 +7,18 @@ mkdir -p ${XDG_CONFIG_HOME}
 
 
 ##### i3 configs #####
-ln -sf ${CONFIGS_PATH}/xdg_config/i3 ${XDG_CONFIG_HOME}/i3
+ln -sfn ${CONFIGS_PATH}/xdg_config/i3 ${XDG_CONFIG_HOME}/i3
 if [ ! -f ${XDG_CONFIG_HOME}/i3/local.conf ]; then
     cp ${CONFIGS_PATH}/xdg_config/i3/.local.conf.template ${XDG_CONFIG_HOME}/i3/local.conf
 fi
 ##### i3blocks configs #####
-ln -sf ${CONFIGS_PATH}/xdg_config/i3blocks ${XDG_CONFIG_HOME}/i3blocks
+ln -sfn ${CONFIGS_PATH}/xdg_config/i3blocks ${XDG_CONFIG_HOME}/i3blocks
 
 ##### sway configs #####
-ln -sf ${CONFIGS_PATH}/xdg_config/sway ${XDG_CONFIG_HOME}/sway
+ln -sfn ${CONFIGS_PATH}/xdg_config/sway ${XDG_CONFIG_HOME}/sway
 
 ##### kitty configs #####
-ln -sf ${CONFIGS_PATH}/xdg_config/kitty ${XDG_CONFIG_HOME}/kitty
+ln -sfn ${CONFIGS_PATH}/xdg_config/kitty ${XDG_CONFIG_HOME}/kitty
 if [ ! -f ${XDG_CONFIG_HOME}/kitty/local.conf ]; then
     cp ${CONFIGS_PATH}/xdg_config/kitty/.local.conf.template ${XDG_CONFIG_HOME}/kitty/local.conf
 fi
