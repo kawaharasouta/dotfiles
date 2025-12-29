@@ -10,20 +10,20 @@ mkdir -p ~/.tmux/log/
 
 # place any dotfiles
 ### tmux dotfiles
-ln -sf ${CONFIGS_PATH}/tmux.conf ~/.tmux.conf
-ln -sf ${CONFIGS_PATH}/tmux/ ~/.tmux
+ln -sfn ${CONFIGS_PATH}/tmux.conf ~/.tmux.conf
+ln -sfn ${CONFIGS_PATH}/tmux/ ~/.tmux
 ### bash dotfiles
-ln -sf ${CONFIGS_PATH}/bashrc ~/.bashrc
-ln -sf ${CONFIGS_PATH}/bash ~/.bash
+ln -sfn ${CONFIGS_PATH}/bashrc ~/.bashrc
+ln -sfn ${CONFIGS_PATH}/bash ~/.bash
 if [ ! -f ~/.bashrc_local ]; then
     cp ${CONFIGS_PATH}/bashrc_local.template ~/.bashrc_local
 fi
-#ln -sf ~/.bash/bash_completion ${XDG_CONFIG_HOME}/bash_completion
+#ln -sfn ~/.bash/bash_completion ${XDG_CONFIG_HOME}/bash_completion
 ### vim dotfiles
-ln -sf ${CONFIGS_PATH}/vimrc ~/.vimrc
-ln -sf ${CONFIGS_PATH}/vim ~/.vim
+ln -sfn ${CONFIGS_PATH}/vimrc ~/.vimrc
+ln -sfn ${CONFIGS_PATH}/vim ~/.vim
 ### neovim configs
-ln -sf ${CONFIGS_PATH}/nvim ~/.config/nvim
+ln -sfn ${CONFIGS_PATH}/nvim ~/.config/nvim
 if [ ! -f ~/.config/nvim/local.vim ]; then
     cp ${CONFIGS_PATH}/nvim/.local.vim.template ~/.config/nvim/local.vim
 fi

@@ -1,7 +1,7 @@
 #!/bin/bash
 
 
-ln -sf ${CONFIGS_PATH}/bash_profile ~/.bash_profile
+ln -sfn ${CONFIGS_PATH}/bash_profile ~/.bash_profile
 docker_flag=1
 if [ $((docker_flag)) -eq 1 ]; then
 	tail_vimrc=`tail -n 1 ~/.vimrc`
