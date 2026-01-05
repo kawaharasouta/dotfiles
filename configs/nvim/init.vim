@@ -66,7 +66,8 @@ nnoremap <silent> <leader>l :Denite line<CR>
 
 " Change file/rec command ag.
 call denite#custom#var('file/rec', 'command',
-	\ ['ag', '--follow', '--nocolor', '--nogroup', '-g', ''])
+	\ ['ag', '--follow', '--nocolor', '--nogroup',
+	\  '--hidden', '--ignore', '.git', '-g', ''])
 " Ag command on grep source
 call denite#custom#var('grep', {
 	\ 'command': ['ag'],
